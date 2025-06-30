@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+    rel="stylesheet"
+    as="style"
+    onload="this.rel='stylesheet'"
+    href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+  />
+  <title>Noticias y Eventos</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+      <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f4f2] px-10 py-3">
+        <div class="flex items-center gap-4 text-[#111714]">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em]">Academy</h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+          <div class="flex items-center gap-9">
+            <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
+            <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
+            <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Sobre nosotros</a>
+            <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
+          </div>
+          <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#111714] text-sm font-bold leading-normal tracking-[0.015em]"
+          >
+  <a href="Aplicar.html">  <span class="truncate">Aplica ahora</span></a>
+          </button>
+        </div>
+      </header>
+      <div class="px-40 flex flex-1 justify-center py-5">
+        <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+          <!-- Botones para agregar noticias y eventos -->
+          <div class="flex justify-between mb-4">
+            <button id="toggle-news" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Noticias</button>
+            <button id="toggle-events" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Eventos</button>
+          </div>
+
+          <!-- Sección de Noticias -->
+          <div id="news-section" class="hidden">
+            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Últimas Noticias</h2>
+            <form id="news-form" class="flex flex-col gap-4 px-4 mb-4">
+              <input type="text" id="news-title" placeholder="Título de la noticia" class="border rounded-lg p-2" required />
+              <input type="text" id="news-description" placeholder="Descripción de la noticia" class="border rounded-lg p-2" required />
+              <button type="submit" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Noticia</button>
+            </form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" id="news-list"></div>
+          </div>
+
+          <!-- Sección de Eventos -->
+          <div id="event-section" class="hidden">
+            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Próximos Eventos</h2>
+            <form id="event-form" class="flex flex-col gap-4 px-4 mb-4">
+              <input type="text" id="event-title" placeholder="Título del evento" class="border rounded-lg p-2" required />
+              <input type="text" id="event-description" placeholder="Descripción del evento" class="border rounded-lg p-2" required />
+              <input type="date" id="event-date" class="border rounded-lg p-2" required />
+              <button type="submit" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Evento</button>
+            </form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4" id="event-list"></div>
+          </div>
+
+          <button id="notify-btn" class="mt-5 bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Activar Notificaciones</button>
+        </div>
+      </div>
+      <footer class="flex justify-center">
+        <div class="flex max-w-[960px] flex-1 flex-col">
+          <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+            <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+              <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+              <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+              <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
+            </div>
+            <p class="text-[#648772] text-base font-normal leading-normal">@2023 Academy. All rights reserved.</p>
+          </footer>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Cargar contenido desde localStorage al iniciar
+    document.addEventListener('DOMContentLoaded', function() {
+      loadNews();
+      loadEvents();
+    });
+
+    // Función para mostrar/ocultar secciones
+    document.getElementById('toggle-news').addEventListener('click', function() {
+      document.getElementById('news-section').classList.toggle('hidden');
+      document.getElementById('event-section').classList.add('hidden'); // Ocultar eventos
+    });
+
+    document.getElementById('toggle-events').addEventListener('click', function() {
+      document.getElementById('event-section').classList.toggle('hidden');
+      document.getElementById('news-section').classList.add('hidden'); // Ocultar noticias
+    });
+
+    // Función para agregar noticias
+    document.getElementById('news-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+      const title = document.getElementById('news-title').value;
+      const description = document.getElementById('news-description').value;
+
+      // Crear un nuevo objeto de noticia
+      const newsItem = {
+        id: Date.now().toString(),
+        title,
+        description
+      };
+
+      // Guardar en localStorage
+      saveNews(newsItem);
+      loadNews(); // Recargar la lista de noticias
+      sendNotification('noticia', title); // Enviar notificación
+      document.getElementById('news-form').reset(); // Limpiar el formulario
+    });
+
+    // Función para agregar eventos
+    document.getElementById('event-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+      const title = document.getElementById('event-title').value;
+      const description = document.getElementById('event-description').value;
+      const date = document.getElementById('event-date').value;
+
+      // Crear un nuevo objeto de evento
+      const eventItem = {
+        id: Date.now().toString(),
+        title,
+        description,
+        date
+      };
+
+      // Guardar en localStorage
+      saveEvents(eventItem);
+      loadEvents(); // Recargar la lista de eventos
+      sendNotification('evento', title); // Enviar notificación
+      document.getElementById('event-form').reset(); // Limpiar el formulario
+    });
+
+    // Función para guardar noticias en localStorage
+    function saveNews(newsItem) {
+      const news = JSON.parse(localStorage.getItem('news')) || [];
+      news.push(newsItem);
+      localStorage.setItem('news', JSON.stringify(news));
+    }
+
+    // Función para cargar noticias desde localStorage
+    function loadNews() {
+      const news = JSON.parse(localStorage.getItem('news')) || [];
+      const newsList = document.getElementById('news-list');
+      newsList.innerHTML = ''; // Limpiar la lista antes de cargar
+      news.forEach(item => {
+        const newsContainer = document.createElement('div');
+        newsContainer.className = 'bg-white rounded-lg shadow-md p-4 relative';
+        newsContainer.innerHTML = `
+          <button class="absolute top-2 right-2 text-red-500" onclick="removeNews('${item.id}')">✖</button>
+          <h3 class="text-lg font-semibold">${item.title}</h3>
+          <p class="text-gray-600">${item.description}</p>
+        `;
+        newsList.appendChild(newsContainer);
+      });
+    }
+
+    // Función para eliminar una noticia
+    function removeNews(id) {
+      const news = JSON.parse(localStorage.getItem('news')).filter(item => item.id !== id);
+      localStorage.setItem('news', JSON.stringify(news));
+      loadNews(); // Recargar la lista de noticias
+    }
+
+    // Función para guardar eventos en localStorage
+    function saveEvents(eventItem) {
+      const events = JSON.parse(localStorage.getItem('events')) || [];
+      events.push(eventItem);
+      localStorage.setItem('events', JSON.stringify(events));
+    }
+
+    // Función para cargar eventos desde localStorage
+    function loadEvents() {
+      const events = JSON.parse(localStorage.getItem('events')) || [];
+      const eventList = document.getElementById('event-list');
+      eventList.innerHTML = ''; // Limpiar la lista antes de cargar
+      events.forEach(item => {
+        const eventContainer = document.createElement('div');
+        eventContainer.className = 'bg-white rounded-lg shadow-md p-4 relative';
+        eventContainer.innerHTML = `
+          <button class="absolute top-2 right-2 text-red-500" onclick="removeEvent('${item.id}')">✖</button>
+          <h3 class="text-lg font-semibold">${item.title}</h3>
+          <p class="text-gray-600">Descripción: ${item.description}. Fecha: ${item.date}.</p>
+        `;
+        eventList.appendChild(eventContainer);
+      });
+    }
+
+    // Función para eliminar un evento
+    function removeEvent(id) {
+      const events = JSON.parse(localStorage.getItem('events')).filter(item => item.id !== id);
+      localStorage.setItem('events', JSON.stringify(events));
+      loadEvents(); // Recargar la lista de eventos
+    }
+
+    // Función para enviar notificaciones
+    function sendNotification(type, title) {
+      if (Notification.permission === 'granted') {
+        new Notification(`Nueva ${type}`, {
+          body: `Se ha añadido una nueva ${type}: ${title}`,
+          icon: 'https://example.com/icon.png' // Cambia esto por la URL de tu icono
+        });
+      }
+    }
+
+    // Activar notificaciones
+    document.getElementById('notify-btn').addEventListener('click', function() {
+      if (Notification.permission === 'granted') {
+        // Ya se han concedido permisos
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            // Permiso concedido
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
