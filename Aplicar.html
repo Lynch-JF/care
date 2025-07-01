@@ -6,7 +6,17 @@
   <title>Ficha Informativa - Estancia Infantil Papa Chuchi</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('gaIZ160xMZzr5skAN')
+</script>
+
+
   <style>
     body {
       font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
@@ -184,31 +194,47 @@
     </section>
   </main>
 
-  <script>
-    const form = document.getElementById('form');
-    const responseEl = document.getElementById('form-response');
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
 
-    // Manejar el clic en el botón de menú
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('hidden');
-    });
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("gaIZ160xMZzr5skAN"); 
+  })();
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  const btn = document.querySelector('button[type="submit"]');
+  const form = document.getElementById('form');
+  const responseMessage = document.getElementById('form-response');
 
-      responseEl.classList.add('hidden');
-      responseEl.classList.remove('text-red-600');
-      responseEl.classList.add('text-green-600');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-      // Aquí puedes agregar la lógica para enviar los datos a sheet.best
+    btn.innerText = 'Enviando...';
+    btn.disabled = true;
 
-      // Simulación de respuesta exitosa
-      responseEl.textContent = '¡Gracias! Tu ficha informativa se ha enviado correctamente.';
-      responseEl.classList.remove('hidden');
-      form.reset();
-    });
-  </script>
+    const serviceID = 'default_service';
+    const templateID = 'template_2q1xbi9'; 
+
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn.innerText = 'Enviar Ficha Informativa';
+        btn.disabled = false;
+        responseMessage.classList.remove('hidden');
+        responseMessage.textContent = '¡Formulario enviado correctamente!';
+        form.reset();
+      }, (err) => {
+        btn.innerText = 'Enviar Ficha Informativa';
+        btn.disabled = false;
+        responseMessage.classList.remove('hidden');
+        responseMessage.textContent = 'Error al enviar el formulario. Intenta nuevamente.';
+        console.error('EmailJS error:', err);
+      });
+  });
+</script>
+
+
+
+
+
+
 </body>
 </html>
