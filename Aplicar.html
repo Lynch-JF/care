@@ -6,25 +6,23 @@
   <title>Ficha Informativa - Estancia Infantil Papa Chuchi</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script type="text/javascript">
-  emailjs.init('gaIZ160xMZzr5skAN')
-</script>
-
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init('gaIZ160xMZzr5skAN'); 
+  </script>
 
   <style>
     body {
       font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
     }
+    /* Estilos para el menú responsive. Por defecto oculto en móvil y visible en pantallas grandes */
+    #nav-menu {
+      transition: all 0.3s ease-in-out; /* Transición suave para el menú */
+    }
   </style>
 </head>
 <body class="bg-white min-h-screen flex flex-col">
-  <!-- Header Responsive Sticky -->
   <header class="border-b border-[#f0f4f2] px-6 py-4 lg:px-10">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-4 text-[#111714]">
@@ -194,47 +192,97 @@
     </section>
   </main>
 
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  (function () {
-    emailjs.init("gaIZ160xMZzr5skAN"); 
-  })();
-
-  const btn = document.querySelector('button[type="submit"]');
+  // Consolidar todo el JavaScript relacionado con el envío del formulario aquí
   const form = document.getElementById('form');
+  const submitButton = form.querySelector('button[type="submit"]');
   const responseMessage = document.getElementById('form-response');
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    btn.innerText = 'Enviando...';
-    btn.disabled = true;
+    submitButton.innerText = 'Enviando...';
+    submitButton.disabled = true;
+    responseMessage.classList.add('hidden'); // Ocultar mensajes anteriores
 
-    const serviceID = 'default_service';
-    const templateID = 'template_2q1xbi9'; 
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.services = formData.getAll('services'); // Para múltiples casillas de verificación
 
-    emailjs.sendForm(serviceID, templateID, this)
-      .then(() => {
-        btn.innerText = 'Enviar Ficha Informativa';
-        btn.disabled = false;
-        responseMessage.classList.remove('hidden');
-        responseMessage.textContent = '¡Formulario enviado correctamente!';
-        form.reset();
-      }, (err) => {
-        btn.innerText = 'Enviar Ficha Informativa';
-        btn.disabled = false;
-        responseMessage.classList.remove('hidden');
-        responseMessage.textContent = 'Error al enviar el formulario. Intenta nuevamente.';
-        console.error('EmailJS error:', err);
+    try {
+      // 1. Enviar datos a EmailJS
+      const emailJSPromise = emailjs.sendForm('default_service', 'template_2q1xbi9', this);
+
+      // 2. Enviar datos a Sheet.best
+      const sheetBestPromise = fetch("https://sheet.best/api/sheets/e5698a50-c77c-47ee-895a-eeb9c29c7a17", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "Apellidos del niño(a)": data.childLastName,
+          "Nombre del niño(a)": data.childFirstName,
+          "Fecha de nacimiento": data.birthDate,
+          "Lugar de nacimiento": data.birthPlace,
+          "Pediatra": data.pediatrician,
+          "Alérgico(a) a": data.allergic,
+          "Detalles Alergia": data.allergyDetails,
+          "Sexo": data.gender,
+          "Nombre de la madre": data.motherName,
+          "Apellido de la madre": data.motherLastName,
+          "Cédula de la madre": data.motherID,
+          "Teléfono de la madre": data.motherPhone,
+          "Nombres del padre": data.fatherName,
+          "Apellidos del padre": data.fatherLastName,
+          "Cédula del padre": data.fatherID,
+          "Teléfono del padre": data.fatherPhone,
+          "Con quién vive": data.livingWith,
+          "Contacto de emergencia": data.emergencyContact,
+          "Otros números de teléfono": data.otherPhones,
+          "Servicios que recibe": data.services.join(", "),
+          "Dirección": data.address
+        })
       });
+
+      // Esperar a que ambas promesas se resuelvan
+      await Promise.all([emailJSPromise, sheetBestPromise]);
+
+      responseMessage.classList.remove('hidden');
+      responseMessage.classList.remove('text-red-600'); 
+      responseMessage.classList.add('text-green-600');
+      responseMessage.textContent = '¡Formulario enviado correctamente!';
+      form.reset(); 
+
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      responseMessage.classList.remove('hidden');
+      responseMessage.classList.remove('text-green-600'); 
+      responseMessage.classList.add('text-red-600');
+      responseMessage.textContent = 'Error al enviar el formulario. Intenta nuevamente.';
+    } finally {
+      submitButton.innerText = 'Enviar Ficha Informativa';
+      submitButton.disabled = false;
+    }
   });
+
+  // Lógica del botón de navegación responsive
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  navToggle.addEventListener('click', function() {
+    // Si el menú está oculto (tiene la clase 'hidden'), lo mostramos añadiendo 'flex' y quitando 'hidden'
+    if (navMenu.classList.contains('hidden')) {
+      navMenu.classList.remove('hidden');
+      navMenu.classList.add('flex');
+    } else {
+      // Si el menú está visible (tiene la clase 'flex'), lo ocultamos añadiendo 'hidden' y quitando 'flex'
+      navMenu.classList.remove('flex');
+      navMenu.classList.add('hidden');
+    }
+  });
+
 </script>
-
-
-
-
-
 
 </body>
 </html>
