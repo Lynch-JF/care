@@ -1,22 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
       rel="stylesheet"
       as="style"
       onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
     <title>Estancia Infantil Papá Chuchi</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+      }
+      /* Añadimos una transición para una apertura/cierre más suave del menú */
+      #nav-menu {
+        transition: all 0.3s ease-in-out;
+      }
+    </style>
   </head>
   <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
       <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f4f2] px-10 py-3">
+        <header
+          class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f4f2] px-6 py-4 lg:px-10"
+        >
           <div class="flex items-center gap-4 text-[#111714]">
             <div class="size-4">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,20 +43,28 @@
             </div>
             <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em]">Academy</h2>
           </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
+
+          <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
               <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
               <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
               <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Sobre nosotros</a>
-              <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
+              <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News & Events</a>
             </div>
             <button
               class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#111714] text-sm font-bold leading-normal tracking-[0.015em]"
             >
-            <a href="Aplicar.html">  <span class="truncate">Aplica ahora</span></a>
+              <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
             </button>
-          </div>
+          </nav>
         </header>
+
         <div class="px-40 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div class="@container">
@@ -56,12 +79,11 @@
             </div>
             <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra misión</h2>
             <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea mollitia similique dicta corporis, saepe iusto sint facere accusantium eos accusamus aliquam asperiores ipsa earum fugiat, aliquid reiciendis! Dolorem, saepe quisquam?
-
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea mollitia similique dicta corporis, saepe iusto sint facere accusantium eos accusamus aliquam asperiores ipsa earum fugiat, aliquid reiciendis! Dolorem, saepe quisquam?
             </p>
             <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra visión</h2>
             <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa eveniet reiciendis similique assumenda ipsum tempora nisi voluptate blanditiis, necessitatibus ex veniam debitis vel ut rem optio perferendis officia iusto!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa eveniet reiciendis similique assumenda ipsum tempora nisi voluptate blanditiis, necessitatibus ex veniam debitis vel ut rem optio perferendis officia iusto!
             </p>
             <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra historia</h2>
             <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
@@ -123,5 +145,33 @@
         </footer>
       </div>
     </div>
+
+    <script>
+      // Lógica para el botón de navegación responsive
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      if (navToggle && navMenu) { // Asegurarse de que los elementos existan antes de añadir el listener
+        navToggle.addEventListener('click', function() {
+          // Si el menú está oculto (tiene la clase 'hidden'), lo mostramos añadiendo 'flex' y quitando 'hidden'
+          if (navMenu.classList.contains('hidden')) {
+            navMenu.classList.remove('hidden');
+            navMenu.classList.add('flex');
+            navMenu.classList.add('flex-col'); // Asegurarse de que los elementos se apilen verticalmente
+            navMenu.classList.add('w-full'); // Ocupar todo el ancho disponible
+          } else {
+            // Si el menú está visible (tiene la clase 'flex'), lo ocultamos añadiendo 'hidden' y quitando 'flex'
+            navMenu.classList.remove('flex');
+            navMenu.classList.remove('flex-col');
+            navMenu.classList.remove('w-full');
+            navMenu.classList.add('hidden');
+          }
+        });
+      }
+
+      // NOTA: No necesitamos el script de EmailJS o Sheet.best en esta página si no hay formulario aquí.
+      // Si esta página también va a enviar formularios, necesitarás incluir la inicialización de EmailJS
+      // y la lógica de envío del formulario como en el ejemplo anterior.
+    </script>
   </body>
 </html>
