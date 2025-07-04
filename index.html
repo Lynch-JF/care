@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Estancia Infantil Papá Chuchi</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
       rel="stylesheet"
@@ -9,169 +15,134 @@
       href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
 
-    <title>Estancia Infantil Papá Chuchi</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
       body {
         font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
       }
-      /* Añadimos una transición para una apertura/cierre más suave del menú */
       #nav-menu {
         transition: all 0.3s ease-in-out;
       }
     </style>
   </head>
-  <body>
-    <div
-      class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
-      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
-    >
-      <div class="layout-container flex h-full grow flex-col">
-        <header
-          class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f4f2] px-6 py-4 lg:px-10"
-        >
-          <div class="flex items-center gap-4 text-[#111714]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+
+  <body class="bg-white text-[#111714] overflow-x-hidden">
+    <div class="min-h-screen flex flex-col">
+
+
+      <header class="flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 border-b border-[#f0f4f2]">
+        <div class="flex items-center gap-4">
+          <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" />
+          <h2 class="text-lg font-bold">Estancia Infantil Papá Chuchi</h2>
+        </div>
+
+        <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none block">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+      <nav
+  id="nav-menu"
+  class="hidden lg:flex flex-col lg:flex-row gap-4 lg:gap-8 w-full lg:w-auto mt-4 lg:mt-0 text-sm font-medium items-start lg:items-center"
+>
+  <a href="index.html" class="block px-2 py-1">Colegio</a>
+  <a href="Galeria.html" class="block px-2 py-1">Galería</a>
+  <a href="SobreNosotros.html" class="block px-2 py-1">Sobre Nosotros</a>
+  <a href="Eventos.html" class="block px-2 py-1">Eventos</a>
+  <a href="Aplicar.html" class="block bg-[#38e07b] font-bold px-4 py-2 rounded-lg text-center">Aplica ahora</a>
+</nav>
+
+      </header>
+
+      <!-- ✅ CONTENIDO PRINCIPAL -->
+      <main class="flex-1 flex justify-center px-4 sm:px-6 lg:px-10 py-6">
+        <div class="w-full max-w-4xl">
+
+          <!-- Imagen superior -->
+          <div class="rounded-lg overflow-hidden min-h-[218px] bg-cover bg-center flex flex-col justify-end"
+            style='background-image: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCI_qJNGB5lthiaz4mAue4HA6_U7-2xqh4rNrlGIOAt-up7KLuGRZkpxP3H7-8K_78OzY6QgfdaQKRVxGWLCbhpNV3yXON90I9kqNJ7D6hGajr0dLLHs8nSjllqxrHmddfPvFf6JJMaC3mBnkTk5_JS_6icpoo4r4v9FdQ1jhHrqCiOwH92ZH3--bIUNe3g1yrCPrcwcr3_AQYWYo3C8_MA9UfScJXAkNKufnkX3bpxfQpLuMpzJZ4sH9-uvPphH7UrNjdRR1-jWBuT");'>
+            <div class="p-4">
+              <p class="text-white text-2xl font-bold leading-tight">Nuestra historia</p>
             </div>
-            <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em]">Academy</h2>
           </div>
 
-          <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-
-          <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
-            <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
-              <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
-              <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
-              <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Sobre nosotros</a>
-              <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News & Events</a>
-            </div>
-            <button
-              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#111714] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
-            </button>
-          </nav>
-        </header>
-
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:px-4 @[480px]:py-3">
-                <div
-                  class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-white @[480px]:rounded-lg min-h-[218px]"
-                  style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCI_qJNGB5lthiaz4mAue4HA6_U7-2xqh4rNrlGIOAt-up7KLuGRZkpxP3H7-8K_78OzY6QgfdaQKRVxGWLCbhpNV3yXON90I9kqNJ7D6hGajr0dLLHs8nSjllqxrHmddfPvFf6JJMaC3mBnkTk5_JS_6icpoo4r4v9FdQ1jhHrqCiOwH92ZH3--bIUNe3g1yrCPrcwcr3_AQYWYo3C8_MA9UfScJXAkNKufnkX3bpxfQpLuMpzJZ4sH9-uvPphH7UrNjdRR1-jWBuT");'
-                >
-                  <div class="flex p-4"><p class="text-white tracking-light text-[28px] font-bold leading-tight">Nuestra historia</p></div>
-                </div>
-              </div>
-            </div>
-            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra misión</h2>
-            <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
+          <!-- Secciones -->
+          <section class="pt-6">
+            <h2 class="text-[22px] font-bold pb-2">Nuestra misión</h2>
+            <p class="text-base leading-relaxed pb-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea mollitia similique dicta corporis, saepe iusto sint facere accusantium eos accusamus aliquam asperiores ipsa earum fugiat, aliquid reiciendis! Dolorem, saepe quisquam?
             </p>
-            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra visión</h2>
-            <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
+
+            <h2 class="text-[22px] font-bold pb-2 pt-4">Nuestra visión</h2>
+            <p class="text-base leading-relaxed pb-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa eveniet reiciendis similique assumenda ipsum tempora nisi voluptate blanditiis, necessitatibus ex veniam debitis vel ut rem optio perferendis officia iusto!
             </p>
-            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nuestra historia</h2>
-            <p class="text-[#111714] text-base font-normal leading-normal pb-3 pt-1 px-4">
+
+            <h2 class="text-[22px] font-bold pb-2 pt-4">Nuestra historia</h2>
+            <p class="text-base leading-relaxed pb-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatum ipsam. Quos minus eaque porro assumenda asperiores vel placeat. Nihil doloribus facere ratione exercitationem sequi id vero corrupti nostrum accusantium!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore in labore soluta expedita a itaque eveniet dignissimos molestias repudiandae, molestiae perferendis quisquam quas quae harum odit deserunt est nihil. Dicta.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore in labore soluta expedita a itaque eveniet dignissimos molestias repudiandae, molestiae perferendis quisquam quas quae harum odit deserunt est nihil. Dicta.
             </p>
-            <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Conozca nuestro liderazgo</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div class="flex flex-col gap-3 text-center pb-3">
-                <div class="px-4">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAePkgGxIkx6z8u7Xab3wkRPaH3hkBQPU8sP79TBY1fHbqwet6MvTtWlXILY8nXeOb3J5z-K_Kra97tp4Fjqt_RL6J-9ObZkkJI0xU6GnH9kO5ThscDIEfbPXDl6gYV-TCGEC1Xc059e6754bSNl6E5jCthZRmMNcTjiFv8ARnO3__0lrVctZev0A-k8ZAUCM5BuDsej8scpAIZC8y9xWHrHEXekAwyFvhZb5gXvjyAYknBv0tgrO0v6e74F0nu1dYZ83yg7Jp9wphF");'
-                  ></div>
+          </section>
+
+          <!-- Liderazgo -->
+          <section class="pt-6">
+            <h2 class="text-[22px] font-bold pb-4">Conozca nuestro liderazgo</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <!-- Keily -->
+              <div class="flex flex-col items-center text-center">
+                <div class="w-32 h-32 rounded-full bg-cover bg-center mb-3 overflow-hidden"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAePkgGxIkx6z8u7Xab3wkRPaH3hkBQPU8sP79TBY1fHbqwet6MvTtWlXILY8nXeOb3J5z-K_Kra97tp4Fjqt_RL6J-9ObZkkJI0xU6GnH9kO5ThscDIEfbPXDl6gYV-TCGEC1Xc059e6754bSNl6E5jCthZRmMNcTjiFv8ARnO3__0lrVctZev0A-k8ZAUCM5BuDsej8scpAIZC8y9xWHrHEXekAwyFvhZb5gXvjyAYknBv0tgrO0v6e74F0nu1dYZ83yg7Jp9wphF");'>
                 </div>
-                <div>
-                  <p class="text-[#111714] text-base font-medium leading-normal">Keily</p>
-                  <p class="text-[#648772] text-sm font-normal leading-normal">Directora de la academia</p>
-                </div>
+                <p class="font-medium">Keily</p>
+                <p class="text-[#648772] text-sm">Directora de la academia</p>
               </div>
-              <div class="flex flex-col gap-3 text-center pb-3">
-                <div class="px-4">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbA3RhoGFMg1FePFMuwK8CG8KSBVCcObVANf2-X7zorJ7F1VdDqYVbzQuQpWARDQq9yE0NtNolWfRjVRoqrgfo6stx5tbyy9scLPtJ1Vgd2uP8MjD7vpVkmdv3ToNSjc2kSnNPlcqOwwvCPK3xN7W3AJXcFwAT-GbPT-JQFYBSu2lmDeK1pDOWe5pRM2cCTLQSM8KmRmTwVZJQqoqVN5KI9drkF8Q7N33UvWKXhIwBbUxdzitxvRMiOO4L3su0o9bRqbMnp4FqywSB");'
-                  ></div>
+
+              <!-- Charles -->
+              <div class="flex flex-col items-center text-center">
+                <div class="w-32 h-32 rounded-full bg-cover bg-center mb-3 overflow-hidden"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbA3RhoGFMg1FePFMuwK8CG8KSBVCcObVANf2-X7zorJ7F1VdDqYVbzQuQpWARDQq9yE0NtNolWfRjVRoqrgfo6stx5tbyy9scLPtJ1Vgd2uP8MjD7vpVkmdv3ToNSjc2kSnNPlcqOwwvCPK3xN7W3AJXcFwAT-GbPT-JQFYBSu2lmDeK1pDOWe5pRM2cCTLQSM8KmRmTwVZJQqoqVN5KI9drkF8Q7N33UvWKXhIwBbUxdzitxvRMiOO4L3su0o9bRqbMnp4FqywSB");'>
                 </div>
-                <div>
-                  <p class="text-[#111714] text-base font-medium leading-normal">Mr. Charles Davis</p>
-                  <p class="text-[#648772] text-sm font-normal leading-normal">Director of Academics</p>
-                </div>
+                <p class="font-medium">Mr. Charles Davis</p>
+                <p class="text-[#648772] text-sm">Director of Academics</p>
               </div>
-              <div class="flex flex-col gap-3 text-center pb-3">
-                <div class="px-4">
-                  <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-full"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4E6NS7dTrZGYPahnE9bEBxYode4WOu1SvLmINvAa-By8XKESC7AiWpP0uN5rFiWXU_6WSWiZWbOgYSIsUibeCO2_aFTy68qu3ZdL3Bq3dfzIsbrNNEqTBXgwt76o0VBoyrd7Z5dOQNfs12nAKBp1cSc6F8OcJC9P9xLm8EiXgqvC7qaVlarO5D3e2ul7A5MJVxp9Vl7Yb0oE53Y9QoaHDt3WDuQoJnUP2UOEcB6kPDOH5fLfgVT7mYrkzo16Arp5LuyNI44Dn-DV9");'
-                  ></div>
+
+              <!-- Olivia -->
+              <div class="flex flex-col items-center text-center">
+                <div class="w-32 h-32 rounded-full bg-cover bg-center mb-3 overflow-hidden"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4E6NS7dTrZGYPahnE9bEBxYode4WOu1SvLmINvAa-By8XKESC7AiWpP0uN5rFiWXU_6WSWiZWbOgYSIsUibeCO2_aFTy68qu3ZdL3Bq3dfzIsbrNNEqTBXgwt76o0VBoyrd7Z5dOQNfs12nAKBp1cSc6F8OcJC9P9xLm8EiXgqvC7qaVlarO5D3e2ul7A5MJVxp9Vl7Yb0oE53Y9QoaHDt3WDuQoJnUP2UOEcB6kPDOH5fLfgVT7mYrkzo16Arp5LuyNI44Dn-DV9");'>
                 </div>
-                <div>
-                  <p class="text-[#111714] text-base font-medium leading-normal">Ms. Olivia Carter</p>
-                  <p class="text-[#648772] text-sm font-normal leading-normal">Dean of Students</p>
-                </div>
+                <p class="font-medium">Ms. Olivia Carter</p>
+                <p class="text-[#648772] text-sm">Dean of Students</p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-        <footer class="flex justify-center">
-          <div class="flex max-w-[960px] flex-1 flex-col">
-            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-              <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-                <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
-                <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
-                <a class="text-[#648772] text-base font-normal leading-normal min-w-40" href="#">Contact Us</a>
-              </div>
-              <p class="text-[#648772] text-base font-normal leading-normal">@2023 Academy. All rights reserved.</p>
-            </footer>
-          </div>
-        </footer>
-      </div>
+      </main>
+
+      <!-- ✅ FOOTER -->
+      <footer class="bg-white border-t border-[#f0f4f2] py-10 text-center text-sm text-[#648772]">
+        <div class="flex flex-col gap-6 items-center max-w-4xl mx-auto px-4 sm:flex-row sm:justify-between">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <p class="mt-6 text-center">@2023 Academy. All rights reserved.</p>
+      </footer>
     </div>
 
+    <!-- ✅ SCRIPT MENU MÓVIL -->
     <script>
-      // Lógica para el botón de navegación responsive
       const navToggle = document.getElementById('nav-toggle');
       const navMenu = document.getElementById('nav-menu');
 
-      if (navToggle && navMenu) { // Asegurarse de que los elementos existan antes de añadir el listener
-        navToggle.addEventListener('click', function() {
-          // Si el menú está oculto (tiene la clase 'hidden'), lo mostramos añadiendo 'flex' y quitando 'hidden'
-          if (navMenu.classList.contains('hidden')) {
-            navMenu.classList.remove('hidden');
-            navMenu.classList.add('flex');
-            navMenu.classList.add('flex-col'); // Asegurarse de que los elementos se apilen verticalmente
-            navMenu.classList.add('w-full'); // Ocupar todo el ancho disponible
-          } else {
-            // Si el menú está visible (tiene la clase 'flex'), lo ocultamos añadiendo 'hidden' y quitando 'flex'
-            navMenu.classList.remove('flex');
-            navMenu.classList.remove('flex-col');
-            navMenu.classList.remove('w-full');
-            navMenu.classList.add('hidden');
-          }
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function () {
+          navMenu.classList.toggle('hidden');
         });
       }
-
-      // NOTA: No necesitamos el script de EmailJS o Sheet.best en esta página si no hay formulario aquí.
-      // Si esta página también va a enviar formularios, necesitarás incluir la inicialización de EmailJS
-      // y la lógica de envío del formulario como en el ejemplo anterior.
     </script>
   </body>
 </html>
