@@ -45,7 +45,7 @@
           <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
         </div>
         <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
-          <a href="Aplicar-ahora.html"><span class="truncate">Aplica ahora</span></a>
+          <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
         </button>
       </nav>
     </header>
@@ -212,34 +212,34 @@
       const emailJSPromise = emailjs.sendForm('default_service', 'template_2q1xbi9', this);
 
       // 2. Enviar datos a Sheet.best
-      const sheetBestPromise = fetch("https://sheet.best/api/sheets/e5698a50-c77c-47ee-895a-eeb9c29c7a17", {
+      const sheetBestPromise = fetch("https://api.sheetbest.com/sheets/e2d73b71-4825-4302-a576-399f0187f7f9", {
         method: "POST",
         mode: "cors",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "Apellidos del niño(a)": data.childLastName,
-          "Nombre del niño(a)": data.childFirstName,
-          "Fecha de nacimiento": data.birthDate,
-          "Lugar de nacimiento": data.birthPlace,
-          "Pediatra": data.pediatrician,
-          "Alérgico(a) a": data.allergic,
-          "Detalles Alergia": data.allergyDetails,
-          "Sexo": data.gender,
-          "Nombre de la madre": data.motherName,
-          "Apellido de la madre": data.motherLastName,
-          "Cédula de la madre": data.motherID,
-          "Teléfono de la madre": data.motherPhone,
-          "Nombres del padre": data.fatherName,
-          "Apellidos del padre": data.fatherLastName,
-          "Cédula del padre": data.fatherID,
-          "Teléfono del padre": data.fatherPhone,
-          "Con quién vive": data.livingWith,
-          "Contacto de emergencia": data.emergencyContact,
-          "Otros números de teléfono": data.otherPhones,
-          "Servicios que recibe": data.services.join(", "),
-          "Dirección": data.address
+         "Apellidos del niño/a": data.childLastName,
+         "Nombre del niño/a": data.childFirstName,
+         "Fecha de nacimiento": data.birthDate,
+         "Lugar de nacimiento": data.birthPlace,
+         "Pediatra": data.pediatrician,
+         "Alérgico/a a:": data.allergic,
+         "Si la respuesta es sí, especifique": data.allergyDetails,
+         "Sexo": data.gender,
+         "Nombre de la madre": data.motherName,
+         "Apellido de la madre": data.motherLastName,
+         "Cédula de la madre": data.motherID,
+         "Teléfono de la madre": data.motherPhone,
+         "Nombres del padre": data.fatherName,
+         "Apellidos del padre": data.fatherLastName,
+         "Cédula del padre": data.fatherID,
+         "Teléfono del padre": data.fatherPhone,
+         "¿Con quién vive?": data.livingWith,
+         "En caso de emergencia llamar a:": data.emergencyContact,
+         "Otros números de teléfono": data.otherPhones,
+         "Servicios que recibe": data.services.join(", "),
+        "Dirección": data.address
         })
       });
 
