@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería Infantil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    button.like-btn {
+      @apply flex items-center gap-2 px-3 py-1 rounded-lg border border-gray-300 text-gray-600 font-medium transition-colors duration-300 ease-in-out select-none;
+    }
+    button.like-btn.liked {
+      @apply bg-green-400 text-white border-green-400;
+    }
+    button.like-btn:hover {
+      @apply bg-green-100 border-green-300 text-green-700;
+    }
+    button.like-btn.liked:hover {
+      @apply bg-green-500;
+    }
+    .photo-card.empty {
+      @apply bg-white rounded-xl shadow p-4 flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-300 text-gray-500 hover:bg-green-50 hover:border-green-400 transition-colors duration-300 ease-in-out select-none;
+      aspect-ratio: 4 / 3;
+    }
+    .photo-card.empty svg {
+      @apply w-12 h-12 mb-2;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body class="bg-white font-plus-jakarta-sans min-h-screen flex flex-col">
+  <div class="layout-container flex h-full grow flex-col">
+    <header class="border-b border-[#f0f4f2] px-6 py-4 lg:px-10">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 text-[#111714]">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em]">Academy</h2>
+        </div>
+        <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="Colegio.html">Colegio</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Sobre nosotros</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="News & Events.html">News &amp; Events</a>
+        </div>
+        <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
+          <a href="Aplicar ahora.html"><span class="truncate">Aplica ahora</span></a>
+        </button>
+      </nav>
+    </header>
+
+    <main class="flex-1 px-6 lg:px-10 py-10 max-w-[1200px] mx-auto w-full flex flex-col gap-8">
+      <h1 class="text-4xl font-extrabold text-[#111714] text-center">Galería de Fotos de los Niños</h1>
+      <p class="max-w-3xl mx-auto text-center text-gray-600">
+        Bienvenidos a la galería. Aquí los padres pueden subir fotos de sus niños y dar "like" para mostrar su apoyo.
+      </p>
+
+      <input type="file" id="file-upload" accept="image/*" multiple class="hidden" />
+
+      <section aria-label="Galería de fotos" id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></section>
+    </main>
+  </div>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+
+    const gallery = document.getElementById('gallery');
+    const fileUploadInput = document.getElementById('file-upload');
+
+    // Autenticación simple
+    const AUTH_USERNAME = 'admin'; // Cambia esto por el nombre de usuario permitido
+    const AUTH_PASSWORD = 'password'; // Cambia esto por la contraseña permitida
+    let isAuthenticated = false;
+
+    // Función para autenticar al usuario
+    function authenticate() {
+      const username = prompt('Ingrese su nombre de usuario:');
+      const password = prompt('Ingrese su contraseña:');
+      if (username === AUTH_USERNAME && password === AUTH_PASSWORD) {
+        isAuthenticated = true;
+        alert('Autenticación exitosa. Ahora puedes agregar fotos.');
+      } else {
+        alert('Credenciales incorrectas. Solo el administrador puede agregar fotos.');
+      }
+    }
+
+    // Llamar a la función de autenticación al cargar la página
+    authenticate();
+
+    function getAddedPhotos() {
+      try {
+        return JSON.parse(localStorage.getItem('addedPhotos')) || [];
+      } catch {
+        return [];
+      }
+    }
+    function saveAddedPhotos(added) {
+      localStorage.setItem('addedPhotos', JSON.stringify(added));
+    }
+    function getLikes() {
+      try {
+        return JSON.parse(localStorage.getItem('galleryLikes')) || {};
+      } catch {
+        return {};
+      }
+    }
+    function saveLikes(likes) {
+      localStorage.setItem('galleryLikes', JSON.stringify(likes));
+    }
+    function generateId() {
+      return 'photo-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+    }
+
+    function createPhotoCard(photo, liked, likeCount) {
+      const card = document.createElement('article');
+      card.className = 'photo-card bg-white rounded-xl shadow p-4 flex flex-col items-center';
+
+      const img = document.createElement('img');
+      img.src = photo.url;
+      img.alt = `Foto de ${photo.name || 'niño'}`;
+      img.loading = 'lazy';
+      img.className = 'rounded-lg w-full aspect-[4/3] object-cover mb-3';
+      card.appendChild(img);
+
+      const nameEl = document.createElement('h3');
+      nameEl.textContent = photo.name || 'Sin nombre';
+      nameEl.className = 'text-gray-900 font-semibold mb-2 text-lg text-center truncate w-full';
+      card.appendChild(nameEl);
+
+      const likeBtn = document.createElement('button');
+      likeBtn.type = 'button';
+      likeBtn.className = 'like-btn';
+      if (liked) likeBtn.classList.add('liked');
+      likeBtn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+      likeBtn.setAttribute('aria-label', liked ? `Remover like a foto de ${photo.name}` : `Dar like a foto de ${photo.name}`);
+      likeBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ${liked ? 'fill-white' : 'fill-none'} stroke-current stroke-2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <span>${likeCount}</span>
+      `;
+      card.appendChild(likeBtn);
+
+      likeBtn.addEventListener('click', () => {
+        const likes = getLikes();
+        const isLiked = !!likes[photo.id];
+        if (isLiked) {
+          delete likes[photo.id];
+        } else {
+          likes[photo.id] = true;
+        }
+        saveLikes(likes);
+        renderGallery();
+      });
+
+      return card;
+    }
+
+    function createEmptyCard() {
+      const card = document.createElement('article');
+      card.className = 'photo-card empty';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'Agregar nueva foto');
+      card.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+        <span>Agregar Foto</span>
+      `;
+      card.addEventListener('click', () => {
+        if (isAuthenticated) {
+          fileUploadInput.click();
+        } else {
+          alert('Solo el administrador puede agregar fotos.');
+        }
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (isAuthenticated) {
+            fileUploadInput.click();
+          } else {
+            alert('Solo el administrador puede agregar fotos.');
+          }
+        }
+      });
+      return card;
+    }
+
+    function getLikeCount(photoId) {
+      const likes = getLikes();
+      return likes[photoId] ? 1 : 0;
+    }
+
+    function renderGallery() {
+      gallery.innerHTML = '';
+      const addedPhotos = getAddedPhotos();
+      addedPhotos.forEach(photo => {
+        const liked = !!getLikes()[photo.id];
+        const likeCount = getLikeCount(photo.id);
+        const card = createPhotoCard(photo, liked, likeCount);
+        gallery.appendChild(card);
+      });
+      gallery.appendChild(createEmptyCard());
+    }
+
+    fileUploadInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length === 0) return;
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const newPhoto = {
+            id: generateId(),
+            name: 'Foto subida',
+            url: ev.target.result
+          };
+          const addedPhotos = getAddedPhotos();
+          addedPhotos.unshift(newPhoto);
+          saveAddedPhotos(addedPhotos);
+          renderGallery();
+        };
+        reader.readAsDataURL(file);
+      });
+      fileUploadInput.value = '';
+    });
+
+    renderGallery();
+  </script>
+</body>
+</html>
