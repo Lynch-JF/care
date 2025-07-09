@@ -23,30 +23,31 @@
     }
   </style>
 </head>
-<body>
-  <div class="min-h-screen flex flex-col bg-white overflow-x-hidden">
-    <!-- Header -->
-    <header class="border-b border-[#f0f4f2] px-4 py-4 lg:px-10 flex justify-between items-center">
-      <div class="flex items-center gap-4">
+<body class="bg-white min-h-screen flex flex-col">
+  <header class="border-b border-[#f0f4f2] px-6 py-4 lg:px-10">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 text-[#111714]">
+          <div class="flex items-center gap-4">
           <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" />
           <h2 class="text-lg font-bold">Estancia Infantil Papá Chuchi</h2>
         </div>
-
-      <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      <nav
-        id="nav-menu"
-        class="max-h-0 lg:max-h-full hidden lg:flex flex-col lg:flex-row mt-4 lg:mt-0 w-full lg:w-auto items-start lg:items-center"
-      >
-        <a href="index.html" class="block w-full text-[#111714] text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-100">Colegio</a>
-        <a href="#" class="block w-full text-[#111714] text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-100">Galería</a>
-        <a href="#" class="block w-full text-[#111714] text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-100">Sobre nosotros</a>
-        <a href="Eventos.html" class="block w-full text-[#111714] text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-100">Noticias y Eventos</a>
-        <a href="Aplicar.html" class="block w-full bg-[#38e07b] text-[#111714] text-sm font-bold px-4 py-2 rounded-lg mt-1">Aplica ahora</a>
+        </div>
+        <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Sobre nosotros</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
+        </div>
+        <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
+          <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
+        </button>
       </nav>
     </header>
 
