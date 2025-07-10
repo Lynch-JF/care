@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ficha Informativa - Estancia Infantil Papa Chuchi</title>
+  <link href="Css.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    emailjs.init('9j05sCqDDz08wnKCa'); 
+  </script>
+
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+    }
+    /* Estilos para el menú responsive. Por defecto oculto en móvil y visible en pantallas grandes */
+    #nav-menu {
+      transition: all 0.3s ease-in-out; /* Transición suave para el menú */
+    }
+
+     
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 350px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      margin-left: 5%;
+      margin-top: 3%;
+    }
+
+    .sidebar h2 {
+      margin-top: -22px;
+      margin-left: 30px;
+      color: #111;
+    }
+
+    .info {
+      margin: 20px 0;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 10px;
+      background-color: #c00;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .buttons a.secondary {
+      background-color:  #009933;
+    }
+
+    #map {
+      flex: 1;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+      }
+
+      #map {
+        height: 300px;
+      }
+    }
+
+    /* Panel flotante de redes sociales */
+.social-panel {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: #ffffffcc;
+  border-radius: 10px 0 0 10px;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.social-panel a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+}
+
+.social-panel a img:hover {
+  transform: scale(1.2);
+}
+
+  </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+  <header class="border-b border-[#f0f4f2] px-6 py-4 lg:px-10">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 text-[#111714]">
+          <div class="flex items-center gap-4">
+          <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" />
+          <h2 class="text-lg font-bold">Estancia Infantil Papá Chuchi</h2>
+          <br>
+        </div>
+        </div>
+        <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Contactos</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
+        </div>
+        <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
+          <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
+        </button>
+      </nav>
+    </header>
+
+ <div class="sidebar">
+             <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" /> <h2>Estancia Infantil Papá Chuchi</h2>
+    <div class="info">
+      <p><strong>Dirección:</strong> Calle Principal #123, Ciudad</p>
+      <p><strong>Teléfono:</strong> (809) 555-1234</p>
+      <p><strong>Horario:</strong> Lun-Vie: 8:00 AM - 6:00 PM</p>
+    </div>
+    <div class="buttons">
+          
+      <a href="https://wa.me/18095551234" target="_blank" class="secondary">Contactar por WhatsApp</a>
+          <a href="Aplicar.html">Escribite Ya!!</a>
+
+   
+   
+   
+    </div>
+  </div>
+
+<!-- Panel flotante de redes sociales -->
+<div class="social-panel">
+  <a href="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" target="_blank" title="Facebook">
+    <img src="img/facebook.png" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/tupagina" target="_blank" title="Instagram">
+    <img src="img/ig.png" alt="Instagram">
+  </a>
+  <a href="https://wa.me/18095551234" target="_blank" title="WhatsApp">
+    <img src="img/ws.png" alt="WhatsApp">
+  </a>
+</div>
+
+
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      const ubicacion = { lat: 18.7357, lng: -70.1627 }; // Coordenadas de ejemplo
+      const mapa = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: ubicacion,
+      });
+
+      new google.maps.Marker({
+        position: ubicacion,
+        map: mapa,
+        title: "Centro Educativo Arcoíris",
+      });
+    }
+  </script>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121052.56302249078!2d-70.15976428985597!3d18.533755144870415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8b18bb5189b1%3A0x2d77bcbbec918c8d!2sColegio%20Las%20Palomitas!5e0!3m2!1ses-419!2sdo!4v1752118215809!5m2!1ses-419!2sdo" width="600" height="450" style="border:0; margin-top: -19%; margin-left: 40%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+   <!-- Footer -->
+    <footer class="mt-10 px-4 text-center text-[#648772] text-sm">
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#" class="min-w-[120px]">Privacy Policy</a>
+        <a href="#" class="min-w-[120px]">Terms of Service</a>
+        <a href="#" class="min-w-[120px]">Contact Us</a>
+      </div>
+      <p class="mt-4">@2023 Academy. All rights reserved.</p>
+    </footer>
+
+    <!-- Script de menú responsivo -->
+    <script>
+      const navToggle = document.getElementById("nav-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      if (navToggle && navMenu) {
+        navToggle.addEventListener("click", () => {
+          if (navMenu.classList.contains("hidden")) {
+            navMenu.classList.remove("hidden");
+            navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
+          } else {
+            navMenu.style.maxHeight = '0px';
+            setTimeout(() => navMenu.classList.add("hidden"), 300);
+          }
+        });
+      }
+    </script>
+    </div>
+
+</body>
+</html>
