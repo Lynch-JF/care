@@ -2,117 +2,145 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link
-    rel="stylesheet"
-    as="style"
-    onload="this.rel='stylesheet'"
-    href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Noticias y Eventos</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style>
     body {
-      font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
     }
     #nav-menu {
-      transition: max-height 0.4s ease-in-out;
-      overflow: hidden;
+      transition: all 0.3s ease-in-out;
     }
   </style>
 </head>
+
 <body class="bg-white min-h-screen flex flex-col">
+  <!-- HEADER -->
   <header class="border-b border-[#f0f4f2] px-6 py-4 lg:px-10">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-4 text-[#111714]">
-          <div class="flex items-center gap-4">
-          <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" />
-          <h2 class="text-lg font-bold">Estancia Infantil Papá Chuchi</h2>
-        </div>
-        </div>
-        <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-4 text-[#111714]">
+        <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" />
+        <h2 class="text-lg font-bold">Estancia Infantil Papá Chuchi</h2>
       </div>
-      <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
-        <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
-          <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
-          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
-          <a class="text-[#111714] text-sm font-medium leading-normal" href="Contacto.html">Contactos</a>
-          <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
-        </div>
-        <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
-          <a href="Aplicar.html"><span class="truncate">Aplica ahora</span></a>
-        </button>
-      </nav>
-    </header>
+      <button id="nav-toggle" class="lg:hidden text-[#111714] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
 
-    <!-- Contenido principal -->
-    <main class="px-4 sm:px-6 lg:px-40 flex-1 py-6">
-      <div class="max-w-4xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between gap-4 mb-4">
-          <button id="toggle-news" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Noticias</button>
-          <button id="toggle-events" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Eventos</button>
-        </div>
-
-        <!-- Noticias -->
-        <section id="news-section" class="hidden">
-          <h2 class="text-[22px] font-bold px-2 pb-3">Últimas Noticias</h2>
-          <form id="news-form" class="flex flex-col gap-4 px-2 mb-4">
-            <input type="text" id="news-title" placeholder="Título de la noticia" class="border rounded-lg p-2" required />
-            <input type="text" id="news-description" placeholder="Descripción de la noticia" class="border rounded-lg p-2" required />
-            <button type="submit" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Noticia</button>
-          </form>
-          <div id="news-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2"></div>
-        </section>
-
-        <!-- Eventos -->
-        <section id="event-section" class="hidden">
-          <h2 class="text-[22px] font-bold px-2 pb-3">Próximos Eventos</h2>
-          <form id="event-form" class="flex flex-col gap-4 px-2 mb-4">
-            <input type="text" id="event-title" placeholder="Título del evento" class="border rounded-lg p-2" required />
-            <input type="text" id="event-description" placeholder="Descripción del evento" class="border rounded-lg p-2" required />
-            <input type="date" id="event-date" class="border rounded-lg p-2" required />
-            <button type="submit" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Agregar Evento</button>
-          </form>
-          <div id="event-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2"></div>
-        </section>
-
-        <button id="notify-btn" class="mt-5 bg-[#38e07b] text-white font-bold py-2 px-4 rounded">Activar Notificaciones</button>
+    <nav id="nav-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-8 mt-4 lg:mt-0">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
+        <a class="text-[#111714] text-sm font-medium" href="index.html">Colegio</a>
+        <a class="text-[#111714] text-sm font-medium" href="#">Galería</a>
+        <a class="text-[#111714] text-sm font-medium" href="Contacto.html">Contactos</a>
+        <a class="text-[#111714] text-sm font-medium" href="Eventos.html">News & Events</a>
       </div>
-    </main>
+      <a href="Aplicar.html" class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
+        Aplica ahora
+      </a>
+    </nav>
+  </header>
 
-    <!-- Footer -->
-    <footer class="mt-10 px-4 text-center text-[#648772] text-sm">
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#" class="min-w-[120px]">Privacy Policy</a>
-        <a href="#" class="min-w-[120px]">Terms of Service</a>
-        <a href="#" class="min-w-[120px]">Contact Us</a>
+  <!-- MAIN -->
+  <main class="flex-1 w-full max-w-5xl mx-auto px-6 pb-16 pt-8">
+    <section>
+      <h2 class="text-[#111714] text-2xl font-bold px-2 pb-4">Últimas Noticias</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Noticia 1</h3>
+          <p class="text-gray-600">Descripción breve de la noticia 1.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Noticia 2</h3>
+          <p class="text-gray-600">Descripción breve de la noticia 2.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Noticia 3</h3>
+          <p class="text-gray-600">Descripción breve de la noticia 3.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Noticia 4</h3>
+          <p class="text-gray-600">Descripción breve de la noticia 4.</p>
+        </div>
       </div>
-      <p class="mt-4">@2023 Academy. All rights reserved.</p>
-    </footer>
+    </section>
 
-    <!-- Script de menú responsivo -->
-    <script>
-      const navToggle = document.getElementById("nav-toggle");
-      const navMenu = document.getElementById("nav-menu");
+    <section class="pt-10">
+      <h2 class="text-[#111714] text-2xl font-bold px-2 pb-4">Próximos Eventos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Evento 1</h3>
+          <p class="text-gray-600">Fecha: 20 de diciembre de 2023.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Evento 2</h3>
+          <p class="text-gray-600">Fecha: 25 de diciembre de 2023.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Evento 3</h3>
+          <p class="text-gray-600">Fecha: 30 de diciembre de 2023.</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-lg font-semibold">Evento 4</h3>
+          <p class="text-gray-600">Fecha: 5 de enero de 2024.</p>
+        </div>
+      </div>
+    </section>
 
-      if (navToggle && navMenu) {
-        navToggle.addEventListener("click", () => {
-          if (navMenu.classList.contains("hidden")) {
-            navMenu.classList.remove("hidden");
-            navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
-          } else {
-            navMenu.style.maxHeight = '0px';
-            setTimeout(() => navMenu.classList.add("hidden"), 300);
+    <div class="mt-8 text-center">
+      <button id="notify-btn" class="bg-[#38e07b] text-white font-bold py-2 px-4 rounded">
+        Activar Notificaciones
+      </button>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-white border-t mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-10 text-center text-sm text-[#648772]">
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-4">
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="#" class="hover:underline">Terms of Service</a>
+        <a href="#" class="hover:underline">Contact Us</a>
+      </div>
+      <p>©2023 Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.getElementById('notify-btn').addEventListener('click', function () {
+      if (Notification.permission === 'granted') {
+        startNotifications();
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            startNotifications();
           }
         });
       }
-    </script>
-  </div>
+    });
+
+    function startNotifications() {
+      setInterval(() => {
+        new Notification('Nueva Noticia o Evento', {
+          body: '¡Revisa la página para más detalles!',
+          icon: 'https://example.com/icon.png'
+        });
+      }, 15000);
+    }
+
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('flex');
+    });
+  </script>
 </body>
 </html>

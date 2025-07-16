@@ -144,7 +144,7 @@
         <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-9">
           <a class="text-[#111714] text-sm font-medium leading-normal" href="index.html">Colegio</a>
           <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Galeria</a>
-          <a class="text-[#111714] text-sm font-medium leading-normal" href="#">Contactos</a>
+          <a class="text-[#111714] text-sm font-medium leading-normal" href="Contacto.html">Contactos</a>
           <a class="text-[#111714] text-sm font-medium leading-normal" href="Eventos.html">News &amp; Events</a>
         </div>
         <button class="flex min-w-[84px] h-10 px-4 items-center justify-center bg-[#38e07b] text-[#111714] text-sm font-bold rounded-lg">
@@ -153,57 +153,71 @@
       </nav>
     </header>
 
- <div class="sidebar">
-             <img src="Logo.jpg" alt="Logo" class="h-6 w-auto" /> <h2>Estancia Infantil Papá Chuchi</h2>
-    <div class="info">
+    <div class="flex flex-col lg:flex-row gap-6 w-full px-4 mt-10">
+  <!-- 🟧 TARJETA DE INFORMACIÓN -->
+  <div class="sidebar bg-white shadow p-6 rounded-lg w-full lg:w-1/2">
+    <img src="Logo.jpg" alt="Logo" class="h-6 w-auto mb-2" />
+    <h2 class="text-xl font-bold mb-4" style="margin-top: -5%;">Estancia Infantil Papá Chuchi</h2>
+
+    <div class="info text-gray-700 text-sm space-y-1 mb-4">
       <p><strong>Dirección:</strong> Calle#9, esquina#5 la caleta campo lindo segundo</p>
-      <p><strong>Teléfono:</strong> (829) 967-3624 </p>
+      <p><strong>Teléfono:</strong> (829) 967-3624</p>
       <p><strong>Horario:</strong> Lun-Vie: 8:00 AM - 4:45 PM</p>
     </div>
-    <div class="buttons">
-          
-      <a href="https://wa.me/18299673624" target="_blank" class="secondary">Contactar por WhatsApp</a>
-          <a href="Aplicar.html">Escribite Ya!!</a>
 
-   
-   
-   
+    <div class="buttons flex flex-col gap-2">
+      <a href="https://wa.me/18299673624" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded text-center">Contactar por WhatsApp</a>
+      <a href="Aplicar.html" class="bg-blue-600 text-white px-4 py-2 rounded text-center">¡Escríbete ya!</a>
     </div>
   </div>
 
-<!-- Panel flotante de redes sociales -->
-<div class="social-panel">
-  <a href="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" target="_blank" title="Facebook">
-    <img src="img/facebook.png" alt="Facebook">
-  </a>
-  <a href="https://www.instagram.com/estanciainfantilpapachuchi?utm_source=ig_web_button_share_sheet&igsh=M2pieHdhYzRha3du" target="_blank" title="Instagram">
-    <img src="img/ig.png" alt="Instagram">
-  </a>
-  <a href="https://wa.me/18299673624 " target="_blank" title="WhatsApp">
-    <img src="img/ws.png" alt="WhatsApp">
-  </a>
+  <!-- 🟩 TARJETA DEL MAPA -->
+  <div class="bg-white shadow p-6 rounded-lg w-full lg:w-1/2">
+    <h2 class="text-xl font-bold mb-4">Ubicación</h2>
+    <div class="relative w-full pb-[56.25%] rounded-lg overflow-hidden">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121052.56302249078!2d-70.15976428985597!3d18.533755144870415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8b18bb5189b1%3A0x2d77bcbbec918c8d!2sColegio%20Las%20Palomitas!5e0!3m2!1ses-419!2sdo!4v1752118215809!5m2!1ses-419!2sdo"
+        class="absolute top-0 left-0 w-full h-full border-0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
 </div>
 
+    <!-- Panel flotante de redes sociales -->
+    <div class="social-panel">
+    <a href="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" target="_blank" title="Facebook">
+        <img src="img/facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/estanciainfantilpapachuchi?utm_source=ig_web_button_share_sheet&igsh=M2pieHdhYzRha3du" target="_blank" title="Instagram">
+        <img src="img/ig.png" alt="Instagram">
+    </a>
+    <a href="https://wa.me/18299673624 " target="_blank" title="WhatsApp">
+        <img src="img/ws.png" alt="WhatsApp">
+    </a>
+    </div>
 
-  <div id="map"></div>
 
-  <script>
-    function initMap() {
-      const ubicacion = { lat: 18.7357, lng: -70.1627 }; // Coordenadas de ejemplo
-      const mapa = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: ubicacion,
-      });
+    <div id="map"></div>
 
-      new google.maps.Marker({
-        position: ubicacion,
-        map: mapa,
-        title: "Centro Educativo Arcoíris",
-      });
-    }
-  </script>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121052.56302249078!2d-70.15976428985597!3d18.533755144870415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf8b18bb5189b1%3A0x2d77bcbbec918c8d!2sColegio%20Las%20Palomitas!5e0!3m2!1ses-419!2sdo!4v1752118215809!5m2!1ses-419!2sdo" width="600" height="450" style="border:0; margin-top: -19%; margin-left: 40%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <script>
+        function initMap() {
+        const ubicacion = { lat: 18.7357, lng: -70.1627 }; // Coordenadas de ejemplo
+        const mapa = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: ubicacion,
+        });
 
+        new google.maps.Marker({
+            position: ubicacion,
+            map: mapa,
+            title: "Centro Educativo Arcoíris",
+        });
+        }
+    </script>
+  
 
    <!-- Footer -->
     <footer class="mt-10 px-4 text-center text-[#648772] text-sm">
