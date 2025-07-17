@@ -143,6 +143,90 @@
       navMenu.classList.toggle('hidden');
       navMenu.classList.toggle('flex');
     });
+
+    function verificarSoporteNotificaciones() {
+  if (!('Notification' in window)) {
+    alert('Este navegador no soporta notificaciones de escritorio.');
+    return false;
+  }
+  return true;
+}
+
+  function pedirPermisoYNotificar() {
+  if (!verificarSoporteNotificaciones()) return;
+
+  if (Notification.permission === 'granted') {
+    mostrarNotificacion();
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        mostrarNotificacion();
+      } else {
+        alert('Has bloqueado las notificaciones 😢');
+      }
+    });
+  } else {
+    alert('Las notificaciones están bloqueadas manualmente en el navegador.');
+  }
+}
+
+function mostrarNotificacion() {
+  const opciones = {
+    body: '¡Revisa la página para más detalles!',
+    icon: 'https://example.com/icon.png',
+    badge: 'https://example.com/icon.png'
+  };
+
+  try {
+    new Notification('Nueva Noticia o Evento', opciones);
+  } catch (error) {
+    console.error('Error al mostrar la notificación:', error);
+  }
+
+  // También mostramos visualmente un fallback en el sitio:
+  const alerta = document.createElement('div');
+  alerta.innerHTML = `
+    <div class="fixed bottom-4 right-4 bg-green-100 text-green-800 px-4 py-2 rounded-lg shadow-lg border border-green-300">
+      🔔 <strong>Noticia Nueva</strong>: ¡Revisa la página!
+    </div>
+  `;
+  document.body.appendChild(alerta);
+
+  setTimeout(() => alerta.remove(), 5000);
+}
+
+function activarNotificacionesPeriodicas() {
+  mostrarNotificacion(); // una de inmediato
+  setInterval(mostrarNotificacion, 15000); // cada 15 segundos
+}
+
+function mostrarNotificacion() {
+  if (!("Notification" in window)) {
+    alert("Este navegador no soporta notificaciones.");
+    return;
+  }
+
+  if (Notification.permission === "granted") {
+    new Notification("📢 Nueva Noticia o Evento", {
+      body: "Haz clic para ver más detalles.",
+      icon: "https://infantil.vercel.app/Logo.jpg",  
+      badge: "https://infantil.vercel.app/Logo.jpg"  // ícono pequeño (en Android)
+    });
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        mostrarNotificacion();
+      }
+    });
+  }
+}
+
+
+document.getElementById('notify-btn').addEventListener('click', function () {
+  pedirPermisoYNotificar();
+  activarNotificacionesPeriodicas();
+});
+
   </script>
 </body>
 </html>
