@@ -197,7 +197,7 @@ function mostrarNotificacion() {
 
 function activarNotificacionesPeriodicas() {
   mostrarNotificacion(); // una de inmediato
-  setInterval(mostrarNotificacion, 15000); // cada 15 segundos
+  setInterval(mostrarNotificacion, 24 * 60 * 60 * 1000  ); // cada 15 segundos
 }
 
 function mostrarNotificacion() {
@@ -211,7 +211,9 @@ function mostrarNotificacion() {
       body: "Haz clic para ver más detalles.",
       icon: "https://infantil.vercel.app/Logo.jpg",  
       badge: "https://infantil.vercel.app/Logo.jpg"  // ícono pequeño (en Android)
-    });
+    }
+  
+  );
   } else if (Notification.permission !== "denied") {
     Notification.requestPermission().then(permission => {
       if (permission === "granted") {
